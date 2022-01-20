@@ -14,9 +14,9 @@ public class CineEventChange implements EventChange {
             cine.peliculas = new HashMap<>();
         });
         listener((PeliculaAgregada event) -> {
-            cine.peliculas.put(event.getIdCine(),
+            cine.peliculas.put(event.getIdPelicula(),
                     new Pelicula(
-                            event.getIdCine(),
+                            event.getIdPelicula(),
                             event.getTitulo(),
                             event.getGeneros(),
                             event.getAnnio(),

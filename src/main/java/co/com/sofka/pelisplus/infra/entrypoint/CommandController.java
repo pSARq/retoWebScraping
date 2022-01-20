@@ -29,7 +29,7 @@ public class CommandController {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/addPelicula")
+    @Path("/extraerPeliculas")
     public Response executor(AgregarPelicula command) {
         bus.publish(command.getType(), command);
         return Response.ok().build();

@@ -7,7 +7,6 @@ co\com\sofka\pelisplus\infra\generic\DeserializeException.class
 co\com\sofka\pelisplus\domain\generic\EventStoreRepository.class
 co\com\sofka\pelisplus\infra\generic\CommandSerializer.class
 co\com\sofka\pelisplus\infra\message\BusService.class
-co\com\sofka\pelisplus\usecase\UseCaseExtraerPelicula.class
 co\com\sofka\pelisplus\infra\generic\AbstractSerializer.class
 co\com\sofka\pelisplus\infra\entrypoint\SocketService.class
 co\com\sofka\pelisplus\infra\generic\EventSerializer.class

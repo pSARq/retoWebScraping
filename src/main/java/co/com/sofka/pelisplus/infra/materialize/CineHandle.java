@@ -35,16 +35,18 @@ public class CineHandle {
     @ConsumeEvent(value = "sofka.cine.peliculaagregada", blocking = true)
     void consumePeliculaAgregada(PeliculaAgregada event) {
         BasicDBObject document = new BasicDBObject();
-        var key = "courses."+event.getCourseId()+".categories."+Math.abs(event.getCategory().hashCode());
-        document.put(key+".scores."+Math.abs(event.getUser().hashCode())+".user", event.getUser());
-        document.put(key+".scores."+Math.abs(event.getUser().hashCode())+".value", event.getValue());
-        document.put(key+".scores."+Math.abs(event.getUser().hashCode())+".date", event.getDate());
+        var key = "titulo."+event.getTitulo();
+        document.put(key+".titulo", event.getTitulo());
+        document.put(key +".generos", event.getGeneros());
+        document.put(key +".annio", event.getAnnio());
+        document.put(key +".sinopsis", event.getSinopsis());
+        document.put(key +".url", event.getUrl());
 
         BasicDBObject updateObject = new BasicDBObject();
         updateObject.put("$set", document);
 
         mongoClient.getDatabase("queries")
-                .getCollection("program")
+                .getCollection("cine")
                 .updateOne( Filters.eq("_id", event.getAggregateId()), updateObject);
     }
 

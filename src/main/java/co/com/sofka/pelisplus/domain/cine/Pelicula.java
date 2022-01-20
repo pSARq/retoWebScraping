@@ -12,7 +12,7 @@ public final class Pelicula {
     private String url;
 
     public Pelicula(String id, String titulo, String generos, String annio, String sinopsis, String url) {
-        this.id = Objects.requireNonNull(id);
+        this.id = id;
         this.titulo = Objects.requireNonNull(titulo);
         this.generos = Objects.requireNonNull(generos);
         this.annio = Objects.requireNonNull(annio);

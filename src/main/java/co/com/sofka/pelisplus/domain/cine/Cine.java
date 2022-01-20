@@ -7,7 +7,6 @@ import co.com.sofka.pelisplus.domain.generic.DomainEvent;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Cine extends AggregateRoot {
 
@@ -31,9 +30,8 @@ public class Cine extends AggregateRoot {
         return cine;
     }
 
-    public void agregarPelicula(String id, String titulo, String generos, String annio, String sinopsis, String url){
-        this.peliculas.put(id, new Pelicula(id, titulo, generos, annio, sinopsis, url));
-        appendChange(new PeliculaAgregada(id, titulo, generos, annio, sinopsis, url)).apply();
+    public void agregarPelicula(String idPelicula, String titulo, String generos, String annio, String sinopsis, String url){
+        appendChange(new PeliculaAgregada(idPelicula, titulo, generos, annio, sinopsis, url)).apply();
     }
 
     public void modificarTitulo(String id, String titulo) {
