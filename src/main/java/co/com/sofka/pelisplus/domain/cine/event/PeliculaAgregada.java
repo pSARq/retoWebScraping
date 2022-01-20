@@ -13,7 +13,7 @@ public class PeliculaAgregada extends DomainEvent {
     private String url;
 
     public PeliculaAgregada(String idCine, String titulo, String generos, String annio, String sinopsis, String url) {
-        super("sofka.pelisplus.domain.cine.peliculaagregada");
+        super("sofka.cine.peliculaagregada");
         this.idCine = idCine;
         this.titulo = titulo;
         this.generos = generos;
