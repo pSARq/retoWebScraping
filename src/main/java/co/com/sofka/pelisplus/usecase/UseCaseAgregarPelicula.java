@@ -39,7 +39,7 @@ public class UseCaseAgregarPelicula implements Function<AgregarPelicula, List<Do
                 String generos = movie.select(".info-content p:nth-of-type(4) span:nth-of-type(2)").text();
                 String sinopsis = movie.select(".sinopsis").text();
                 String annio = movie.select(".info-content p:nth-of-type(2) span:nth-of-type(2)").text();
-                String url = movie.select(".player.player-normal ul:nth-of-type(2)  li:nth-of-type(1)").attr("data-video");
+                String url = movie.select(".player.player-normal ul:nth-of-type(2)  li:nth-of-type(2)").attr("data-video");
 
                 cine.agregarPelicula(command.getIdPelicula(), titulo, generos, annio, sinopsis, url);
 
