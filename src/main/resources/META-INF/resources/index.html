@@ -23,29 +23,48 @@
         <button id="connect" class="col-md-1 btn btn-primary" type="button">connect</button>
 
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <br/>
         <br/>
          <code class="col-md-12" id="result"></code>
-    </div>
+    </div> -->
+    <table class="table mt-4" id="results">
+        <tr>
+            <th>TITULO</th>
+            <th>GENEROS</th>
+            <th>AÑO</th>
+            <th>SINOPSIS</th>
+            <th>URL</th>
+        </tr>
+    </table>
 </div>
 
-<script type="text/javascript">
-      var connected = false;
-      var socket;
-      document.getElementById("connect").onclick = function() {
-          if (!connected) {
-              var aggregateId = document.getElementById("aggregateId").value;
-              console.log("Val: " + aggregateId);
-              socket = new WebSocket("ws://" + location.host + "/retrieve/" + aggregateId);
+    <script type="text/javascript">
+        var connected = false;
+        var socket;
+        document.getElementById("connect").onclick = function() {
+                if (!connected) {
+                        var aggregateId = document.getElementById("aggregateId").value;
+                        console.log("Val: " + aggregateId);
+                        socket = new WebSocket("ws://" + location.host + "/retrieve/" + aggregateId);
 
-              socket.onmessage = function(m) {
-                  console.log("Got message: " + m.data);
-                  document.getElementById("result").append(m.data + "\n");
-              };
-          }
-      };
+                        socket.onmessage = function(m) {
+                            console.log("Got message: " + m.data);
+                            var pelicula = JSON.parse(m.data);
+                            // peliculas.push(Object.values(pelicula));
+                            // document.getElementById("result").append(pelicula + "\n");
+                            // document.getElementById("result").append(m.data + "\n");
+                            toTable(pelicula);
+                        };
 
+                        function toTable( data ) {
+                            document.getElementById( 'results' )
+                                        .insertAdjacentHTML( 'beforeend',
+                                            `<tr><td>${data.titulo}</td><td>${data.generos}</td><td>${data.annio}</td><td>${data.sinopsis}</td><td><a href="${data.url}" target="_blank">Ver pelicula</a></td></tr>`
+                                        );    
+                        }
+                }
+        };
     </script>
 </body>
 
