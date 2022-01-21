@@ -1,7 +1,6 @@
 package co.com.sofka.pelisplus.infra.entrypoint;
 
 import com.mongodb.client.MongoClient;
-import com.mongodb.client.model.Filters;
 import org.bson.Document;
 
 import javax.ws.rs.*;
@@ -25,8 +24,8 @@ public class QueryController {
         List<Document> documentList = new ArrayList<>();
         mongoClient.getDatabase("queries")
                 .getCollection("cine")
-                //.find()
-                .find(Filters.eq("_id", idCine))
+                .find()
+                //.find(Filters.eq("_id", idCine))
                 .forEach(documentList::add);
         return Response.ok(documentList).build();
     }

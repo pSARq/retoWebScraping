@@ -35,7 +35,7 @@ public class CineHandle {
     @ConsumeEvent(value = "sofka.cine.peliculaagregada", blocking = true)
     void consumePeliculaAgregada(PeliculaAgregada event) {
         BasicDBObject document = new BasicDBObject();
-        var key = "titulo."+event.getTitulo();
+        var key = "peliculas."+event.getTitulo();
         document.put(key+".titulo", event.getTitulo());
         document.put(key +".generos", event.getGeneros());
         document.put(key +".annio", event.getAnnio());
